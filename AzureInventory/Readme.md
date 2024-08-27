@@ -14,8 +14,7 @@ This document provides details on how to use the provided Kusto query to retriev
 
 1. Copy the Kusto query provided below.
 2. Paste it into the query editor in the Resource Graph Explorer.
-3. Select the relevant subscriptions you want to query against (if not already selected).
-4. Click the **Run query** button to execute the query.
+3. Click the **Run query** button to execute the query.
 
 ### Step 3: Download the Results
 
