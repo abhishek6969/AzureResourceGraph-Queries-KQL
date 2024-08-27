@@ -26,7 +26,7 @@ This document provides details on how to use the provided Kusto query to retriev
 
 ## Query Details
 
-
+```kusto
 Resources
 | where type == "microsoft.network/applicationgateways"
 | extend skuVersion = case(
@@ -36,6 +36,7 @@ Resources
 )
 | project name, location, sku = properties.sku.name, tier = properties.sku.tier, skuVersion, resourceGroup, subscriptionId
 | order by skuVersion asc
+```
 
 
 ### Explanation
