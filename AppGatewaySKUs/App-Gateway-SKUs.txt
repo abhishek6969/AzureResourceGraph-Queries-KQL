@@ -1,0 +1,9 @@
+Resources
+| where type == "microsoft.network/applicationgateways"
+| extend skuVersion = case(
+    properties.sku.tier == "Standard" or properties.sku.tier == "WAF", "v1",
+    properties.sku.name == "Standard_v2" or properties.sku.name == "WAF_v2", "v2",
+    "Unknown"
+)
+| project name, location, sku = properties.sku.name, tier = properties.sku.tier, skuVersion, resourceGroup, subscriptionId
+| order by skuVersion asc
