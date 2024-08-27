@@ -26,7 +26,7 @@ This document provides details on how to use the provided Kusto query to retriev
 
 ## Query Details
 
-```kusto
+
 Resources
 | where type == "microsoft.network/applicationgateways"
 | extend skuVersion = case(
