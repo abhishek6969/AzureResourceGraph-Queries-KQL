@@ -59,4 +59,4 @@ The query filters and joins virtual machines with their installed extensions to 
 
 ## Conclusion
 
-This Kusto query is a powerful tool for identifying Azure virtual machines that have the "AzureMonitorWindowsAgent" extension installed. By running this query in the Azure Resource Graph Explorer, you can efficiently gather and analyze information about these VMs, including their OS details and VM sizes, which is useful for monitoring and compliance purposes.
+This Kusto query is a powerful tool for identifying Azure virtual machines that have the "AzureMonitorWindowsAgent" extension installed. By running this query in the Azure Resource Graph Explorer, you can efficiently gather and analyze information about these VMs, including their OS details and VM sizes. Additionally, the query can be easily tailored to search for other extensions by modifying the `ExtensionName` filter, allowing you to adapt it for various monitoring or management needs.
