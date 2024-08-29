@@ -22,7 +22,7 @@ This document provides instructions on how to use the Kusto query to retrieve an
    | where type == 'microsoft.storage/storageaccounts'
    | project name, resourceGroup, publicNetworkAccess = properties.networkAcls.defaultAction, ['kind']
    | where publicNetworkAccess == 'Allow'
-\
+
 
 ### Step 3: Download the Results
 
