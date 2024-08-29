@@ -1,0 +1,16 @@
+Resources
+| where type in~ ('microsoft.compute/virtualmachines', 'microsoft.classiccompute/virtualmachines', 'microsoft.compute/virtualmachinescalesets')
+| extend resourceId=tolower(id) 
+| join kind = leftouter (
+    RecoveryServicesResources
+    | where type == "microsoft.recoveryservices/vaults/backupfabrics/protectioncontainers/protecteditems"
+    | where properties.backupManagementType == "AzureIaasVM"
+    | project resourceId = tolower(tostring(properties.sourceResourceId)), backupItemid = id, 
+              lastBackupStatus = properties.lastBackupTime, 
+              isBackedUp = isnotempty(id)
+) on resourceId 
+| extend isProtected = isnotempty(backupItemid)
+| extend status = iff(isProtected == bool(true), "Backup Configured", "Backup Not Configured")
+| extend lastBackup = iff(isProtected == bool(true), lastBackupStatus, "No backup configured")
+| project resourceId, isProtected, status, lastBackup
+
