@@ -1,0 +1,19 @@
+resources
+| where type == 'microsoft.compute/virtualmachines'
+| extend
+    JoinID = toupper(id),
+    OSName = tostring(properties.osProfile.computerName),
+    OSType = tostring(properties.storageProfile.osDisk.osType),
+    VMSize = tostring(properties.hardwareProfile.vmSize)
+| join kind=leftouter(
+    resources
+    | where type == 'microsoft.compute/virtualmachines/extensions'
+    | extend
+        VMId = toupper(substring(id, 0, indexof(id, '/extensions'))),
+        automaticUpgrade =properties.enableAutomaticUpgrade,
+        ExtensionName = name
+    |where ExtensionName == "AzureMonitorWindowsAgent"
+) on $left.JoinID == $right.VMId
+| project ExtensionName, id, OSName, OSType, VMSize,automaticUpgrade,OS = properties.extended.instanceView.osName
+|where ExtensionName == "AzureMonitorWindowsAgent" and OS has "2022"
+| order by tolower(OSName) asc
