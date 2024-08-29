@@ -1,0 +1,11 @@
+// Query to get snapshots with their IDs and creation time
+resources
+| where type == "microsoft.compute/snapshots"
+| project id, name, subscriptionId,resourceGroup, timeCreated = properties.timeCreated
+| join kind=inner (
+    // Query to get subscription names
+    ResourceContainers
+    | where type =~ 'microsoft.resources/subscriptions'
+    | project subscriptionId = id, subscriptionName = name
+) on subscriptionId
+| project id, name, subscriptionName,resourceGroup, timeCreated
