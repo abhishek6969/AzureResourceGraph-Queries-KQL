@@ -29,4 +29,20 @@ This document provides details on how to use the Kusto query to retrieve and ana
        | project subscriptionId = id, subscriptionName = name
    ) on subscriptionId
    | project id, name, subscriptionName, resourceGroup, timeCreated
+   
+## Output
+
+When you run the query, the output table will include the following fields:
+
+- **id**: The unique identifier for each snapshot.
+- **name**: The name of the snapshot.
+- **subscriptionName**: The name of the subscription to which the snapshot belongs.
+- **resourceGroup**: The resource group in which the snapshot is located.
+- **timeCreated**: The creation time of the snapshot.
+
+The query joins snapshot details with subscription information to display the subscription names along with each snapshot's ID, creation time, and resource group. This data is useful for managing and reporting on snapshots across different subscriptions.
+
+## Conclusion
+
+This Kusto query is a powerful tool for extracting and correlating snapshot details with subscription names in your Azure environment. By running this query in the Azure Resource Graph Explorer, you can efficiently identify and analyze snapshots in relation to their subscriptions, enhancing your resource management and reporting capabilities.
 
