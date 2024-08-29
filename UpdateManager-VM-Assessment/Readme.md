@@ -1,8 +1,8 @@
-# Azure Resource Graph Query for Azure Inventory for Key Resources
+# Azure Resource Graph Query for Azure Update Manager Assessment for VMs
 
 ## Overview
 
-This document provides details on how to use the provided Kusto query to retrieve and analyze information about Azure Environment Inventory.
+This document provides details on how to use the provided Kusto query to retrieve and analyze information about VM patch status using update manager.
 ## Usage
 
 ### Step 1: Access Azure Resource Graph Explorer
