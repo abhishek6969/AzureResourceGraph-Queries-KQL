@@ -1,0 +1,2 @@
+ResourceContainers 
+| where type =~ 'microsoft.resources/subscriptions' 
