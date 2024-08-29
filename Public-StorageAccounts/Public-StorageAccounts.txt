@@ -1,0 +1,4 @@
+resources
+| where type == 'microsoft.storage/storageaccounts'
+| project name, resourceGroup, publicNetworkAccess = properties.networkAcls.defaultAction, ['kind']
+| where publicNetworkAccess == 'Allow'
