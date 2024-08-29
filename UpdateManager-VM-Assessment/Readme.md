@@ -25,7 +25,8 @@ This document provides details on how to use the provided Kusto query to retriev
 
 When you run the query, the output table will include the following fields:
 
-- **resourceId**: The unique identifier for each Azure resource.
+- **resourceId**: The unique identifier for each Azure VM.
+- **name** : The name of each Azure VM.
 - **assessProperties**: Contains detailed assessment information for each VM.
 
 The `UMStatus` field in the output table will reflect the patch status of each VM based on the following conditions:
