@@ -12,7 +12,7 @@ This document provides details on how to use the provided Kusto query to retriev
 
 ### Step 2: Run the Query
 
-1. Copy the Kusto query provided below.
+1. Copy the Kusto query provided in repository.
 2. Paste it into the query editor in the Resource Graph Explorer.
 3. Click the **Run query** button to execute the query.
 
